@@ -19,15 +19,11 @@ public class DemoApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/api/**")
-					.allowedOrigins(
-						"http://localhost:3000",
-						"https://portfolio-jeshwanthsagi.netlify.app"
-					)
+					.allowedOriginPatterns("*")
 					.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 					.allowedHeaders("*")
 					.allowCredentials(true);
 			}
 		};
 	}
-
 }
