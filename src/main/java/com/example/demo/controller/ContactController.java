@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Contact;
 import com.example.demo.service.ContactService;
+import com.example.demo.service.EmailService;
 
 @RestController
 @RequestMapping("/api/contact")
@@ -28,11 +29,18 @@ public class ContactController {
     @Autowired
     private ContactService contactService;
     
+    @Autowired
+    private EmailService emailService;
+    
     // Submit contact form
     @PostMapping
     public ResponseEntity<Map<String, Object>> submitContact(@RequestBody Contact contact) {
         try {
             Contact savedContact = contactService.saveContact(contact);
+            
+            // Send email notification
+            emailService.sendContactNotification(savedContact);
+            
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("message", "Thank you for your message! I'll get back to you soon.");
