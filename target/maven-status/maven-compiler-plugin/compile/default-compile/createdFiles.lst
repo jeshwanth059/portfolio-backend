@@ -1,6 +1,6 @@
+com\example\demo\service\EmailService.class
 com\example\demo\DemoApplication.class
 com\example\demo\service\ContactService.class
-com\example\demo\DemoApplication$1.class
 com\example\demo\model\Contact.class
 com\example\demo\model\Project.class
 com\example\demo\service\ProjectService.class
